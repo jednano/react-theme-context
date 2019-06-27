@@ -1,7 +1,7 @@
 # react-theme-context
 
 [![Travis Build Status](https://img.shields.io/travis/com/jedmao/react-theme-context.svg?style=popout-square&logo=travis)](https://travis-ci.com/jedmao/react-theme-context)
-[![codecov](https://img.shields.io/codecov/c/gh/jedmao/react-theme-context.svg?style=popout-square&token=202a1ea4-a048-44a2-8bd8-527f6effec6a)](https://codecov.io/gh/jedmao/react-theme-context)
+[![codecov](https://img.shields.io/codecov/c/gh/jedmao/react-theme-context.svg?style=popout-square&logo=codecov&token=4f79d0b1189f41e5a5ed32e87ca0a204)](https://codecov.io/gh/jedmao/react-theme-context)
 [![npm version](https://img.shields.io/npm/v/react-theme-context/latest.svg?style=popout-square&logo=npm)](https://www.npmjs.com/package/react-theme-context)
 
 Provides theme [context](https://reactjs.org/docs/context.html) and
