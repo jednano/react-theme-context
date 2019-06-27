@@ -1,0 +1,151 @@
+{
+  "name": "react-theme-context",
+  "version": "0.0.0",
+  "description": "Provides theme context and hooks. Supports theme switching via CSS custom properties.",
+  "keywords": [
+    "react",
+    "react-hooks",
+    "hooks",
+    "css-custom-properties",
+    "theming",
+    "theme-context"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/ThemeContext.d.ts",
+  "module": "dist/ThemeContext.js",
+  "files": [
+    "dist/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jedmao/react-theme-context.git"
+  },
+  "author": "Jed Mao <jedmao@outlook.com>",
+  "bugs": {
+    "url": "https://github.com/jedmao/react-theme-context/issues"
+  },
+  "homepage": "https://github.com/jedmao/react-theme-context#readme",
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "test": "jest --watch",
+    "cover": "jest --coverage",
+    "commit": "git-cz",
+    "prepublishOnly": "npm run build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "jest --coverage"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "src/**/*.{js,jsx}": [
+      "git reset"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "xo",
+      "prettier"
+    ],
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "prettier/prettier": "error"
+    },
+    "plugins": [
+      "prettier"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "proseWrap": "always",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/ThemeContext.tsx"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 100,
+        "branches": 100,
+        "lines": 100,
+        "functions": 100
+      }
+    },
+    "coverageReporters": [
+      "json",
+      "lcov"
+    ],
+    "preset": "ts-jest",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
+    ]
+  },
+  "dependencies": {
+    "@queso/kebab-case": "^1.0.1",
+    "esm": "^3.2.25"
+  },
+  "peerDependencies": {
+    "react": "^16.8",
+    "react-dom": "^16.8"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "@jedmao/semantic-release-npm-github-config": "^1.0.6",
+    "@jedmao/tsconfig": "^0.3.0",
+    "@testing-library/react": "^8.0.4",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.0.10",
+    "@types/react": "^16.8",
+    "@types/react-dom": "^16.8",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "commitizen": "^3.1.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-xo": "^0.26.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^2.6.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^8.2.1",
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "semantic-release": "^15.13.18",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.2"
+  },
+  "release": {
+    "branch": "master",
+    "extends": "@jedmao/semantic-release-npm-github-config"
+  }
+}
