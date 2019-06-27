@@ -7,7 +7,7 @@ const defaultTheme = {
 	primaryColor: 'red',
 }
 
-let setProperty = jest.fn()
+const setProperty = jest.fn()
 const { style } = window.document.documentElement
 const saveSetProperty = style.setProperty
 style.setProperty = setProperty

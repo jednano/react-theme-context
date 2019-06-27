@@ -15,13 +15,16 @@
     "sourceType": "module",
     "tsconfigRootDir": "."
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["prettier", "@typescript-eslint"],
   "extends": [
     "eslint:recommended",
+    "xo",
     "prettier",
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
+    "valid-jsdoc": "off",
+
     // Possible Errors
     "no-async-promise-executor": "error",
     "no-await-in-loop": "error",

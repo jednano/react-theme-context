@@ -66,11 +66,11 @@ export default class ThemeContext<T extends Theme> {
 	): [T, Dispatch<SetStateAction<T>>] {
 		const [theme, setTheme] = this.use()
 		useLayoutEffect(() => {
-			for (const key in theme) {
+			Object.keys(theme).forEach(key => {
 				element.style.setProperty(`--${kebabCase(key)}`, theme[
 					key
 				] as string)
-			}
+			})
 		}, [theme])
 		return [theme, setTheme]
 	}
