@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/jedmao/react-theme-context/compare/v1.0.1...v1.0.2) (2019-06-30)
+
+
+### Bug Fixes
+
+* more flexible theme type ([1067a1f](https://github.com/jedmao/react-theme-context/commit/1067a1f))
+
 ## [1.0.1](https://github.com/jedmao/react-theme-context/compare/v1.0.0...v1.0.1) (2019-06-27)
 
 
