@@ -59,9 +59,14 @@ export default class ThemeContext<T extends object> {
 	 * 	return null
 	 *	}
 	 */
-	public useLayoutEffect(
+	public useLayoutEffect({
+		classNames,
 		element = document.documentElement,
-	): [T, Dispatch<SetStateAction<T>>] {
+	}: {
+		element?: HTMLElement
+		classNames?: string[]
+	} = {}): [T, Dispatch<SetStateAction<T>>] {
+		element.classList.add(...(classNames || []))
 		const [theme, setTheme] = this.use()
 		useLayoutEffect(() => {
 			Object.keys(theme).forEach(setProp)

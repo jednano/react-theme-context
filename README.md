@@ -15,9 +15,55 @@ _The following example uses [TypeScript](http://www.typescriptlang.org/)._
 
 - You only want to create a single theme context and reuse it throughout your
   application.
-- You can create as many themes as you want.
-- A `Theme` is expected to be of type:
-  `Record<string, string | number | boolean>`.
+- You can create as many themes as you want, so long as they implement the same
+  [interface](https://www.typescriptlang.org/docs/handbook/interfaces.html).
+
+### Themes
+
+At its simplest, a theme can store colors:
+
+```ts
+export default interface Theme {
+  errorColor: string
+  anotherColor: string
+}
+```
+
+Here's an example of a theme using this color:
+
+```ts
+import Theme from 'models/Theme'
+
+const colors = {
+  scarlet: '#ff2400',
+  white: 'white',
+}
+
+const myTheme: Theme = {
+  errorColor: colors.scarlet,
+  anotherColor: colors.white,
+}
+
+export default myTheme
+```
+
+You might also want to base a color off of another:
+
+```ts
+class MyTheme implements Theme {
+  public errorColor = colors.scarlet
+  public get anotherColor() {
+    return darken(this.errorColor, 0.2)
+  }
+}
+
+export default new MyTheme()
+```
+
+## Setup
+
+Here's a contrived example of setting up an app with a couple of inline themes
+and creating a button to switch to the 2nd one.
 
 ### themeContext.tsx
 
@@ -96,14 +142,18 @@ themeContext.prop('primaryColor')
 // 'var(--primary-color)'
 ```
 
-### `#useLayoutEffect(element = document.documentElement)`
+### `#useLayoutEffect(options = {})`
 
 _Returns: `[T, Dispatch<SetStateAction<T>>]`_
 
 Sets theme properties as
 [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) on
-the provided `element` or the root `documentElement` by default. If the theme is
-updated, these props are updated too. This enables live theme switching!
+the provided `options.element` or the root `documentElement` by default. If the
+theme is updated, these props are updated too. This enables live theme
+switching!
+
+You can also add class names to the same element via `options.classNames`, which
+is a `string[]`.
 
 _See:
 [React Hooks API Reference | useLayoutEffect](https://reactjs.org/docs/hooks-reference.html#uselayouteffect)_
