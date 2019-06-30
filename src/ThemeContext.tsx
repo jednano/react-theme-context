@@ -9,13 +9,11 @@ import React, {
 	useState,
 } from 'react'
 
-type Theme = Record<string, string | number | boolean>
-
 /**
  * Creates `React.Context` for a theme, exposes its `Provider` as well as some
  * utility functions and hooks for getting and setting the theme.
  */
-export default class ThemeContext<T extends Theme> {
+export default class ThemeContext<T extends object> {
 	private Context: React.Context<[T, Dispatch<SetStateAction<T>>]>
 
 	/**
@@ -66,13 +64,15 @@ export default class ThemeContext<T extends Theme> {
 	): [T, Dispatch<SetStateAction<T>>] {
 		const [theme, setTheme] = this.use()
 		useLayoutEffect(() => {
-			Object.keys(theme).forEach(key => {
-				element.style.setProperty(`--${kebabCase(key)}`, theme[
-					key
-				] as string)
-			})
+			Object.keys(theme).forEach(setProp)
 		}, [theme])
 		return [theme, setTheme]
+		function setProp(key: string) {
+			element.style.setProperty(
+				`--${kebabCase(key)}`,
+				(theme as Record<string, string>)[key],
+			)
+		}
 	}
 
 	/**
