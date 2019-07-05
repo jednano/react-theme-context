@@ -10,9 +10,8 @@
     "theming",
     "theme-context"
   ],
-  "main": "dist/index.js",
+  "main": "dist/ThemeContext.js",
   "types": "dist/ThemeContext.d.ts",
-  "module": "dist/ThemeContext.js",
   "files": [
     "dist/*"
   ],
@@ -95,7 +94,7 @@
   },
   "dependencies": {
     "@queso/kebab-case": "^1.0.1",
-    "esm": "^3.2.25"
+    "ts-helpers": "^1.1.2"
   },
   "peerDependencies": {
     "react": "^16.8",
